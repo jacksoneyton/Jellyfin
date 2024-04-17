@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    network_mode: 'host'
+    volumes:
+      - /opt/jellyfin/config:/config
+      - /opt/jellyfin/cache:/cache
+      - /opt/makemkv/output:/media
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
